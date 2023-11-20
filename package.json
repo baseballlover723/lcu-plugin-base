@@ -1,0 +1,32 @@
+{
+  "name": "lcu-plugin-manager",
+  "version": "1.0.0",
+  "description": "A plugin manager to interact with other LCU plugins",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baseballlover723/lcu-plugin-manager.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/lcuPluginManager.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/lcuPluginManager.js",
+    "lint": "eslint \"**/*.js\""
+  },
+  "dependencies": {
+    "lcu-connector": "baseballlover723/lcu-connector",
+    "lcu-plugin": "baseballlover723/lcu-plugin",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0"
+  },
+  "keywords": [],
+  "author": "baseballlover723",
+  "license": "GPL3"
+}
