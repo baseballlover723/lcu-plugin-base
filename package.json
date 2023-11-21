@@ -13,7 +13,7 @@
   "main": "src/lcuPluginManager.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/lcuPluginManager.js",
+    "start": "node examples/app.js",
     "lint": "eslint \"**/*.js\""
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "ws": "^8.14.2"
   },
   "devDependencies": {
+    "axios": "^1.6.1",
     "eslint": "^8.54.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.0"
