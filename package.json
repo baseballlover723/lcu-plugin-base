@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "lcu-connector": "baseballlover723/lcu-connector",
-    "lcu-plugin": "baseballlover723/lcu-plugin",
+    "lcu-plugin": "^1.0.0",
     "ws": "^8.14.2"
   },
   "devDependencies": {
