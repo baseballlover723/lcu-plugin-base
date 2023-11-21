@@ -1,7 +1,7 @@
 import LcuPluginManager from '../src/lcuPluginManager.js';
-import ExampleBasicLCUChatPlugin from './exampleBasicLCUChatPlugin.js';
-import ExampleAsyncSetupLCUChatPlugin from './exampleAsyncSetupLCUChatPlugin.js';
+import ExampleBasicLcuChatPlugin from './exampleBasicLcuChatPlugin.js';
+import ExampleAsyncSetupLcuChatPlugin from './exampleAsyncSetupLcuChatPlugin.js';
 
-const pluginManager = new LcuPluginManager(new ExampleBasicLCUChatPlugin(), new ExampleAsyncSetupLCUChatPlugin());
+const pluginManager = new LcuPluginManager(new ExampleBasicLcuChatPlugin(), new ExampleAsyncSetupLcuChatPlugin());
 
 pluginManager.start();

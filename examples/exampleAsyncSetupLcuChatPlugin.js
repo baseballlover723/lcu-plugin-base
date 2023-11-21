@@ -1,8 +1,8 @@
 import axios from 'axios';
-import LCUPlugin from 'lcu-plugin';
+import LcuPlugin from 'lcu-plugin';
 
 const REGION_ENDPOINT = 'lol-platform-config/v1/namespaces/LoginDataPacket/competitiveRegion';
-export default class ExampleAsyncSetupLCUChatPlugin extends LCUPlugin {
+export default class ExampleAsyncSetupLcuChatPlugin extends LcuPlugin {
   constructor() {
     super();
   }

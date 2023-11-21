@@ -1,6 +1,6 @@
 {
   "name": "lcu-plugin-manager",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "A plugin manager to interact with other LCU plugins",
   "type": "module",
   "repository": {
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "lcu-connector": "baseballlover723/lcu-connector",
-    "lcu-plugin": "^1.1.1",
+    "lcu-plugin": "^2.0.1",
     "ws": "^8.14.2"
   },
   "devDependencies": {

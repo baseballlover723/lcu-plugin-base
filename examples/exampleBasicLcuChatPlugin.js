@@ -1,6 +1,6 @@
-import LCUPlugin from 'lcu-plugin';
+import LcuPlugin from 'lcu-plugin';
 
-export default class ExampleBasicLCUChatPlugin extends LCUPlugin {
+export default class ExampleBasicLcuChatPlugin extends LcuPlugin {
   constructor() {
     super();
   }
