@@ -10,6 +10,6 @@ export default class ExampleBasicLCUChatPlugin extends LCUPlugin {
   }
 
   handleChat(event) {
-    console.log('examples basic chat plugin event: ', event);
+    this.log('examples basic chat plugin event: ', event);
   }
 }

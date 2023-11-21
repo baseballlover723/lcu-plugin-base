@@ -31,7 +31,7 @@ export default class ExampleAsyncSetupLCUChatPlugin extends LCUPlugin {
       resolve(resp.data);
     }).catch((error) => {
       if ((error.code !== 'ECONNREFUSED' && error?.response?.status >= 500) || retriesLeft <= 0) {
-        console.log('error in getting region', error);
+        this.error('error in getting region', error);
         reject(error);
       }
       setTimeout(() => {
@@ -42,8 +42,7 @@ export default class ExampleAsyncSetupLCUChatPlugin extends LCUPlugin {
 
   handleChat(region) {
     return (event) => {
-      // console.log("handle chat plugin 2: ");
-      console.log(`handle chat plugin with region ${region}, event: `, event);
+      this.log(`handle chat plugin with region ${region}, event: `, event);
     };
   }
 }
