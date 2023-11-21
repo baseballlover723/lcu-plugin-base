@@ -19,7 +19,7 @@ export default class LcuPluginManager {
       ws.on('open', () => {
         for (const plugin of this.plugins) {
           for (const event in plugin.eventSubscriptions) {
-            ws.subscribe(event, plugin.eventSubscriptions[event]);
+            ws.subscribe(event, plugin.eventSubscriptions[event].bind(plugin));
           }
         }
         console.log('ready and listening for events');
