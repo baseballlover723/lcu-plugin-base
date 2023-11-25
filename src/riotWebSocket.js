@@ -39,7 +39,9 @@ export default class RiotWebSocket extends WebSocket {
 
   unsubscribe(topic, callback) {
     super.removeListener(topic, callback);
-    this.send(MESSAGE_TYPES.UNSUBSCRIBE, topic);
+    if (this.listeners(topic).length === 0) {
+      this.send(MESSAGE_TYPES.UNSUBSCRIBE, topic);
+    }
   }
 
   send(type, message) {

@@ -1,6 +1,6 @@
 {
   "name": "lcu-plugin-manager",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "A plugin manager to interact with other LCU plugins",
   "type": "module",
   "repository": {

@@ -13,6 +13,7 @@ export default class ExampleAsyncSetupLcuChatPlugin extends LcuPlugin {
     return this.createPromise((resolve, reject) => {
       this.getRegion().then((region) => {
         this.subscribeEvent('OnJsonApiEvent_lol-chat_v1_conversations', this.handleChat(region));
+        this.log('is ready');
         resolve();
       }).catch((error) => {
         reject(error);
