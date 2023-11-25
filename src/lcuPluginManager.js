@@ -10,8 +10,10 @@ export default class LcuPluginManager {
     this.connector = new LCUConnector();
     this.plugins = plugins;
     this.ws = null;
+    this.clientData = null;
 
     this.connector.on('connect', async (clientData) => {
+      this.clientData = clientData;
       const onConnectPromises = [];
       for (const plugin of this.plugins) {
         const promise = plugin.onConnect(clientData);
@@ -36,37 +38,48 @@ export default class LcuPluginManager {
       for (const plugin of plugins) {
         plugin.onClose();
       }
+      this.clientData = null;
     });
   }
 
   start() {
-    return this.connector.start();
+    this.connector.start();
   }
 
+  // TODO If you start, stop, then start, it doesn't work
   stop() {
-    return this.connector.stop();
+    this.connector.stop();
   }
 
-  connectPlugin(plugin) {
-    if (this.plugins.indexOf(plugin) === -1) {
-      this.plugins.push(plugin);
-      for (const event in plugin.eventSubscriptions) {
-        this.ws.subscribe(event, plugin.eventSubscriptions[event].bind(plugin));
-      }
-    } else {
+  async connectPlugin(plugin) {
+    if (this.plugins.indexOf(plugin) !== -1) {
       console.error('Trying to connect a plugin that is already connected');
+      return;
+    }
+    this.plugins.push(plugin);
+    if (this.clientData === null) {
+      return; // Client isn't started, no setup required
+    }
+    const promise = plugin.onConnect(this.clientData);
+    await promise;
+
+    for (const event in plugin.eventSubscriptions) {
+      this.ws.subscribe(event, plugin.eventSubscriptions[event]);
     }
   }
 
-  disconnectPlugin(plugin) {
+  async disconnectPlugin(plugin) {
     const index = this.plugins.indexOf(plugin);
-    if (index > -1) {
-      for (const event in plugin.eventSubscriptions) {
-        this.ws.unsubscribe(event, plugin.eventSubscriptions[event].bind(plugin));
-      }
-      this.plugins = this.plugins.filter((connectedPlugin) => connectedPlugin !== plugin);
-    } else {
+    if (index === -1) {
       console.error('Trying to disconnect a plugin that is not connected');
+      return;
     }
+
+    for (const event in plugin.eventSubscriptions) {
+      this.ws.unsubscribe(event, plugin.eventSubscriptions[event]);
+    }
+    delete this.plugins[index];
+    const promise = plugin.onClose();
+    await promise;
   }
 }
