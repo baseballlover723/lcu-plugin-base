@@ -7,6 +7,7 @@ export default class ExampleBasicLcuChatPlugin extends LcuPlugin {
 
   onConnect(clientData) {
     this.subscribeEvent('OnJsonApiEvent_lol-chat_v1_conversations', this.handleChat);
+    this.log('is ready');
   }
 
   handleChat(event) {

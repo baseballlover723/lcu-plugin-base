@@ -3,14 +3,13 @@ import ExampleBasicLcuChatPlugin from './exampleBasicLcuChatPlugin.js';
 import ExampleAsyncSetupLcuChatPlugin from './exampleAsyncSetupLcuChatPlugin.js';
 
 const plugins = {
-    exampleChat: new ExampleBasicLcuChatPlugin(),
-    exampleAsync: new ExampleAsyncSetupLcuChatPlugin(),
+  exampleChat: new ExampleBasicLcuChatPlugin(),
+  exampleAsync: new ExampleAsyncSetupLcuChatPlugin(),
 };
 
-const pluginManager = new LcuPluginManager(Object.values(plugins));
+// const pluginManager = new LcuPluginManager(Object.values(plugins));
+const pluginManager = new LcuPluginManager([plugins.exampleChat]);
 
-await pluginManager.start();
+pluginManager.connectPlugin(plugins.exampleAsync);
 
-pluginManager.connectPlugin(plugins.exampleChat);
-pluginManager.disconnectPlugin(plugins.exampleAsync);
-console.log(pluginManager.plugins);
+pluginManager.start();
